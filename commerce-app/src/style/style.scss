@@ -1,0 +1,15 @@
+@import '_reset.scss';
+
+.categories{
+    .category{
+        h1{
+            color: #000;
+            font-size: 20px;
+            font-weight: 900;
+        }
+        p{ 
+            font-size: 15px;
+            font-weight: 600;
+        }
+    }
+}
