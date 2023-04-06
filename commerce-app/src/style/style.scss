@@ -1,9 +1,22 @@
 @import '_reset.scss';
+@import '_variable.scss';
 
+
+header{
+    .img-box{
+        width: 150px;
+    }
+    .nav-items{
+        .nav-item{
+            color: $--dark !important;
+            font-weight: 600;
+        }
+    }
+}
 .categories{
     .category{
         h1{
-            color: #000;
+            color: $--dark;
             font-size: 20px;
             font-weight: 900;
         }

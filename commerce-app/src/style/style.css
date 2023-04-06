@@ -9,6 +9,18 @@ body {
   font-family: "Nunito Sans", sans-serif;
 }
 
+a {
+  text-decoration: none;
+}
+
+header .img-box {
+  width: 150px;
+}
+header .nav-items .nav-item {
+  color: #000 !important;
+  font-weight: 600;
+}
+
 .categories .category h1 {
   color: #000;
   font-size: 20px;

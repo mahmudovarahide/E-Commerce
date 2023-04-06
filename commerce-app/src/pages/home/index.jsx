@@ -54,7 +54,7 @@ const Home = () => {
       ];
   return (
     <section className="categories">
-    <div className="container-fluid">
+    <div className="container">
       <div className="row">
         {categories.map((category) => {
           return (

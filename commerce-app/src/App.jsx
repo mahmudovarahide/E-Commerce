@@ -1,10 +1,14 @@
 import React from "react";
 import "./style/style.css";
-import Home from "./pages/home";
+import Layout from "./layout";
+import Router from "./router/index";
 
 const App = () => {
   return (
-    <Home />
+    <>
+      <Layout></Layout>
+      <Router />
+    </>
   );
 };
 
