@@ -1,7 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Carditem from '../../components/card.item';
 
+import { UserContext } from '../../context/user.context';
+
 const Home = () => {
+
+  const {currentUser}=useContext(UserContext);
+  console.log(currentUser)
+
     const categories = [
         {
           id: 1,

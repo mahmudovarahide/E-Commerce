@@ -2,7 +2,7 @@ import React from "react";
 import { useRoutes } from "react-router-dom";
 import Home from "../pages/home/index";
 import Contact from "../pages/contact/index";
-import Login from "../pages/login/login";
+import Authentication from "../pages/login/authentication";
 
 const Router = () => {
   const mainRouters = [
@@ -15,8 +15,8 @@ const Router = () => {
       element: <Contact />,
     },
     {
-      path: "/login",
-      element: <Login />,
+      path: "/auth",
+      element: <Authentication />,
     },
   ];
   const route = useRoutes(mainRouters);

@@ -29,4 +29,88 @@ header .nav-items .nav-item {
 .categories .category p {
   font-size: 15px;
   font-weight: 600;
+}
+
+.signup-head h1,
+.signin-head h1 {
+  font-size: 30px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.signUp-form .form-box {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.signUp-form .form-box input {
+  border: 1px solid #ccc;
+  padding: 10px 15px;
+  border-radius: 2px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  outline: none;
+}
+.signUp-form .button-box .signup-button {
+  background-color: rgb(27, 27, 173);
+  color: #fff;
+  border-radius: 2px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  padding: 8px 10px;
+  border: none;
+  width: 100%;
+}
+
+.signin .form-box {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.signin .form-box input {
+  border: 1px solid #ccc;
+  padding: 10px 15px;
+  border-radius: 2px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  outline: none;
+  width: 100%;
+}
+.signin .button-box {
+  display: flex;
+  gap: 20px;
+}
+.signin .button-box .signin-button {
+  margin-top: 20px;
+  background-color: rgb(163, 6, 6);
+  color: #fff;
+  border-radius: 2px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  padding: 8px 10px;
+  border: none;
+  width: 100%;
+}
+.signin .button-box .sign-in-popup {
+  margin-top: 20px;
+  background-color: black;
+  color: #fff;
+  border-radius: 2px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  padding: 8px 10px;
+  border: none;
+  width: 100%;
 }/*# sourceMappingURL=style.css.map */
