@@ -2,10 +2,17 @@ import React, { useContext } from "react";
 import Logo from "./image/logo.svg";
 import { NavLink } from "react-router-dom";
 import { UserContext } from "../../context/user.context";
+import {SignOutUser } from "../../utils/firebase/firebase.utils";
+import Button from "../../components/button/button.componnet";
 
 const Header = () => {
-  const { currentUser } = useContext(UserContext);
-  console.log(currentUser);
+  const { currentUser,setCurrentUser } = useContext(UserContext);
+
+  const SignOutHandle = async() => {
+    await SignOutUser();
+    setCurrentUser(null);
+  };
+  
   return (
     <header className="p-3">
       <div className="container">
@@ -21,9 +28,12 @@ const Header = () => {
               Contact
             </NavLink>
             {currentUser ? (
-              <NavLink to="/profile" className="nav-item">
-               {currentUser.email}
-              </NavLink>
+              <>
+                <NavLink to="/profile" className="nav-item">
+                  {currentUser.email}
+                </NavLink>
+                <Button buttonType="sign-out" onClick={SignOutHandle}>Sign Out</Button>
+              </>
             ) : (
               <NavLink to="/auth" className="nav-item">
                 Login

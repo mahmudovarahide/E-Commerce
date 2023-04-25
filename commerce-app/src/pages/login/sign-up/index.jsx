@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import {
   createAuthUserWithEmailAndPassword,
   createUserDocumentFromAuth,
@@ -6,6 +6,8 @@ import {
 import Swal from "sweetalert2";
 import FormInputField from "../components/input.component";
 import Button from "../../../components/button/button.componnet";
+import { UserContext } from "../../../context/user.context";
+import { useNavigate } from "react-router";
 
 const defaultFormField = {
   name: "",
@@ -17,6 +19,10 @@ const defaultFormField = {
 const SignUp = () => {
   const [formField, setFormField] = useState(defaultFormField);
   const { name, email, password, confirmPassword } = formField;
+
+  const navigate =useNavigate();
+
+  const { setCurrentUser } = useContext(UserContext);
 
   const resetFormFields = () => {
     setFormField(defaultFormField);
@@ -39,10 +45,11 @@ const SignUp = () => {
         email,
         password
       );
-
+      setCurrentUser(user)
       await createUserDocumentFromAuth(user, { name });
       if (createUserDocumentFromAuth) {
         Swal.fire("Əla!", "Siz uğurla qeydiyyatdan keçdiniz!", "success");
+        navigate('/')
       }
       resetFormFields();
     } catch (error) {

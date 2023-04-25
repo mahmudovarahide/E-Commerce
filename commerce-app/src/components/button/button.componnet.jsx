@@ -5,7 +5,8 @@ const BUTTON_TYPE_CLASSES = {
   inverted: "inverted",
   signUp: "signup-button",
   signIn: "signin-button",
-  signInPopup: "sign-in-popup"
+  signInPopup: "sign-in-popup",
+  signOut: "sign-out",
 };
 
 const Button = ({ children, buttonType, ...otherProps }) => {
