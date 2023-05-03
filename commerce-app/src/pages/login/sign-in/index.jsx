@@ -1,12 +1,10 @@
-import { useState, useContext } from "react";
-import { UserContext } from "../../../context/user.context";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "../../../components/button/button.componnet";
 import FormInputField from "../components/input.component";
 import {
   signInUserWithEmailAndPassword,
   googleSignWithPopup,
-  createUserDocumentFromAuth,
 } from "../../../utils/firebase/firebase.utils";
 import Swal from "sweetalert2";
 
@@ -17,11 +15,10 @@ const defaultFormField = {
 
 const SignIn = () => {
   const navigate = useNavigate();
+
   const signInWithGoogle = async () => {
     try {
-      const { user } = await googleSignWithPopup();
-      await createUserDocumentFromAuth(user);
-      setCurrentUser(user);
+      await googleSignWithPopup();
       navigate("/");
       Swal.fire("Əla!", "Siz uğurla daxil oldunuz!", "success");
       resetFormFields();
@@ -33,8 +30,6 @@ const SignIn = () => {
   const [formField, setFormField] = useState(defaultFormField);
   const { email, password } = formField;
 
-  const { setCurrentUser } = useContext(UserContext);
-
   const resetFormFields = () => {
     setFormField(defaultFormField);
   };
@@ -43,7 +38,6 @@ const SignIn = () => {
     event.preventDefault();
     try {
       const { user } = await signInUserWithEmailAndPassword(email, password);
-      setCurrentUser(user);
       navigate("/");
 
       Swal.fire("Əla!", "Siz uğurla daxil oldunuz!", "success");
