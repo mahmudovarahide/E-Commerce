@@ -53,7 +53,7 @@ const SignIn = () => {
         Swal.fire({
           icon: "error",
           title: "Təəssüf...",
-          text: "Email və ya şifrə düzgün deyil",
+          text: "İsdifadəçi yoxdur",
         });
       }
     }

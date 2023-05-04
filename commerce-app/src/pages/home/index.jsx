@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import Carditem from '../../components/card.item';
 
 import { UserContext } from '../../context/user.context';
+import Prodcuts from '../products/prodcuts';
 
 const Home = () => {
 
@@ -68,6 +69,7 @@ const Home = () => {
           );
         })}
       </div>
+      <Prodcuts/>
     </div>
   </section>
   )

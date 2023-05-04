@@ -8,7 +8,6 @@ import { signOutUser } from "../../utils/firebase/firebase.utils";
 const Header = () => {
   const { currentUser } = useContext(UserContext);
 
-  
   return (
     <header className="p-3">
       <div className="container">
@@ -20,15 +19,20 @@ const Header = () => {
             <NavLink to="/" className="nav-item">
               Home
             </NavLink>
-            <NavLink to="/contact" className="nav-item">
+            <NavLink to="/contacts" className="nav-item">
               Contact
             </NavLink>
             {currentUser ? (
               <>
+                <NavLink to="/products" className="nav-item">
+                  Products
+                </NavLink>
                 <NavLink to="/profile" className="nav-item">
                   {currentUser.email}
                 </NavLink>
-                <Button buttonType="sign-out" onClick={signOutUser}>Sign Out</Button>
+                <Button buttonType="sign-out" onClick={signOutUser}>
+                  Sign Out
+                </Button>
               </>
             ) : (
               <NavLink to="/auth" className="nav-item">
