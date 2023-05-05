@@ -1,12 +1,19 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import Logo from "./image/logo.svg";
 import { NavLink } from "react-router-dom";
 import { UserContext } from "../../context/user.context";
 import Button from "../../components/button/button.componnet";
 import { signOutUser } from "../../utils/firebase/firebase.utils";
+import CardIcon from "../../components/card-icon/card-icon.component";
+import CardDropdown from "../../components/card-dropdown/card-dropdown.component";
 
 const Header = () => {
   const { currentUser } = useContext(UserContext);
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+  };
 
   return (
     <header className="p-3">
@@ -30,6 +37,8 @@ const Header = () => {
                 <NavLink to="/profile" className="nav-item">
                   {currentUser.email}
                 </NavLink>
+                <CardIcon onClick={toggleDropdown} />
+                {isOpen && <CardDropdown />}
                 <Button buttonType="sign-out" onClick={signOutUser}>
                   Sign Out
                 </Button>

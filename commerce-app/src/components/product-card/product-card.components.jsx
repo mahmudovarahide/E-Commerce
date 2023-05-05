@@ -4,7 +4,7 @@ import Button from "../button/button.componnet";
 const ProductCard = ({ products }) => {
   const { name, price, imgUrl } = products;
   return (
-    <div className="col-md-2">
+    <div className="col-md-2 col-sm-6 col-xs-6">
       <div className="image-box">
         <img className="w-100" src={imgUrl} alt={`${name}`} />
       </div>

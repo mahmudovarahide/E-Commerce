@@ -113,4 +113,55 @@ header .nav-items .nav-item {
   padding: 8px 10px;
   border: none;
   width: 100%;
+}
+
+.card-icon-container {
+  width: 45px;
+  height: 45px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.card-icon-container .shopping-card-icon {
+  width: 24px;
+  height: 24px;
+}
+.card-icon-container .count-item {
+  position: absolute;
+  font-size: 10px;
+  font-weight: bold;
+  bottom: 12px;
+}
+
+.cart-dropdown-container {
+  position: absolute;
+  width: 240px;
+  height: 340px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  border: 1px solid black;
+  background-color: white;
+  top: 90px;
+  right: 40px;
+  z-index: 5;
+}
+.cart-dropdown-container .empty-message {
+  font-size: 18px;
+  margin: 50px auto;
+}
+.cart-dropdown-container .cart-items {
+  height: 240px;
+  display: flex;
+  flex-direction: column;
+  overflow: scroll;
+}
+.cart-dropdown-container .payment {
+  margin-top: auto;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
 }/*# sourceMappingURL=style.css.map */
