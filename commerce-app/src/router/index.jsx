@@ -3,7 +3,7 @@ import { useRoutes } from "react-router-dom";
 import Home from "../pages/home/index";
 import Contact from "../pages/contact/index";
 import Authentication from "../pages/login/authentication";
-import Prodcuts from "../pages/products/prodcuts";
+import Products from "../pages/products/prodcuts";
 
 const Router = () => {
   const mainRouters = [
@@ -21,9 +21,10 @@ const Router = () => {
     },
     {
       path: "/products",
-      element: <Prodcuts />,
+      element: <Products />,
     },
   ];
+  
   const route = useRoutes(mainRouters);
   return <>{route}</>;
 };
