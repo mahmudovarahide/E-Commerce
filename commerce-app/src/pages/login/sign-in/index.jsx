@@ -102,8 +102,7 @@ const SignIn = () => {
           <Button
             type="button"
             buttonType="signInPopup"
-            onClick={signInWithGoogle}
-          >
+            onClick={signInWithGoogle}>
             Google SignIn
           </Button>
         </div>

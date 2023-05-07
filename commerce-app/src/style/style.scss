@@ -122,7 +122,7 @@ header{
       position: absolute;
       font-size: 10px;
       font-weight: bold;
-      bottom: 12px;
+      bottom: 10px;
     }
   }
   .cart-dropdown-container {
@@ -146,7 +146,7 @@ header{
       height: 240px;
       display: flex;
       flex-direction: column;
-      overflow: scroll;
+      overflow-y: auto;
     }
     .payment {
       margin-top: auto;
@@ -157,4 +157,27 @@ header{
     }
   }
   
+  .cart-item-container {
+    width: 100%;
+    display: flex;
+    height: 80px;
+    margin-bottom: 15px;
+  
+    img {
+      width: 30%;
+    }
+  
+    .item-details {
+      width: 70%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 10px 20px;
+  
+      .name {
+        font-size: 16px;
+      }
+    }
+  }
   

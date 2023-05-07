@@ -10,6 +10,7 @@ const Router = () => {
     {
       path: "/",
       element: <Home />,
+      exact:true,
     },
     {
       path: "/contact",
