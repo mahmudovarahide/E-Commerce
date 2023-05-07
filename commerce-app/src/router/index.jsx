@@ -4,6 +4,7 @@ import Home from "../pages/home/index";
 import Contact from "../pages/contact/index";
 import Authentication from "../pages/login/authentication";
 import Products from "../pages/products/prodcuts";
+import Checkout from "../pages/checkout/checkout";
 
 const Router = () => {
   const mainRouters = [
@@ -23,6 +24,10 @@ const Router = () => {
     {
       path: "/products",
       element: <Products />,
+    },
+    {
+      path: "/checkout",
+      element: <Checkout />,
     },
   ];
   
