@@ -35,8 +35,14 @@ export const CardContext = createContext({
   cardItems: [],
   addItemCart: () => {},
   removeCardItem: () => {},
+  clearItemFromCard:()=>{},
   cardCount: 0,
 });
+const clearItem =(cardItems,cardItemToClear)=>{
+  return cardItems.filter(
+    (cardItem) => cardItem.id !== cardItemToClear.id
+  );
+}
 export const CardProvider = ({ children }) => {
   const [isCardOpen, setIsCardOpen] = useState(false);
   const [total, setTotal] = useState(0);
@@ -59,6 +65,9 @@ export const CardProvider = ({ children }) => {
   const removeItemCart = (removeDecrementItem) => {
     setCardItems(removeCardItem(cardItems, removeDecrementItem));
   };
+  const clearItemFromCard = (cardItemToClear) => {
+    setCardItems(clearItem(cardItems, cardItemToClear));
+  };
 
   //quantity uygun total price artir
   useEffect(() => {
@@ -70,13 +79,6 @@ export const CardProvider = ({ children }) => {
     setTotal(newTotal);
   }, [cardItems]);
 
-  useEffect(() => {
-    const newItemCount = cardItems.reduce(
-      (accumulator, cartItem) => accumulator + cartItem.quantity,
-      0
-    );
-    setItemCount(newItemCount);
-  }, [cardItems]);
   const value = {
     isCardOpen,
     setIsCardOpen,
@@ -85,6 +87,7 @@ export const CardProvider = ({ children }) => {
     cardCount,
     removeItemCart,
     total,
+    clearItemFromCard,
     itemCount,
   };
 

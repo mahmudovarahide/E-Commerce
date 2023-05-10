@@ -32,7 +32,7 @@ const Checkout = () => {
       })}
             <div className="d-flex">
         <h5 className="mt-5 fw-bold">
-          Total : <span>{total}</span>
+          Total : <span>{total} AZN </span>
         </h5>
       </div>
     </div>

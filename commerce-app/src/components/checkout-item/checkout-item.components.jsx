@@ -2,8 +2,9 @@ import React, { useContext } from "react";
 import { CardContext } from "../../context/card.context";
 
 const CheckoutItem = ({ item }) => {
-  const { addItemCart, removeItemCart, total } = useContext(CardContext);
-  const { imgUrl, name, quantity } = item;
+  const { addItemCart, removeItemCart,clearItemFromCard } = useContext(CardContext);
+  const { imgUrl, name, quantity, price } = item;
+  const clearItemHandler=()=>clearItemFromCard(item)
   return (
     <>
       <div className="checkout-item-container">
@@ -25,10 +26,10 @@ const CheckoutItem = ({ item }) => {
           ></i>
         </div>
         <div className="col-md-2">
-          <h5>{total}</h5>
+          <h5>{price}</h5>
         </div>
         <div className="col-md-1">
-          <i className="fas fa-xmark"></i>
+          <i className="fas fa-xmark" onClick={clearItemHandler}></i>
         </div>
       </div>
     </>
