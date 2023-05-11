@@ -3,13 +3,13 @@ import { CardContext } from "../../context/card.context";
 
 const CheckoutItem = ({ item }) => {
   const { addItemCart, removeItemCart,clearItemFromCard } = useContext(CardContext);
-  const { imgUrl, name, quantity, price } = item;
+  const { imageUrl, name, quantity, price } = item;
   const clearItemHandler=()=>clearItemFromCard(item)
   return (
     <>
       <div className="checkout-item-container">
         <div className="image-container col-md-4">
-          <img src={imgUrl} alt="" />
+          <img src={imageUrl} alt="" />
         </div>
         <div className="col-md-3">
           <h2 className="name">{name}</h2>

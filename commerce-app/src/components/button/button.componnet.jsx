@@ -9,6 +9,7 @@ const BUTTON_TYPE_CLASSES = {
   signOut: "sign-out",
   cardAddButton:"invert-card-button",
   paymentButton:"payment",
+  productButton:"product-button"
 };
 
 const Button = ({ children, buttonType, ...otherProps }) => {

@@ -251,4 +251,22 @@ header .nav-items .nav-item {
 .checkout-item-container .remove-button {
   padding-left: 12px;
   cursor: pointer;
+}
+
+.products .image-box {
+  height: 200px;
+}
+.products .image-box img {
+  height: 100%;
+}
+.products .product-button {
+  background: black;
+  color: #fff;
+  border: none;
+  padding: 5px 20px;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
 }/*# sourceMappingURL=style.css.map */
