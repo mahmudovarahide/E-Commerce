@@ -3,7 +3,7 @@ import Button from "../button/button.componnet";
 import { CardContext } from "../../context/card.context";
 
 const ProductCard = ({ products }) => {
-  const { name, price, imageUrl } = products;
+  const {name, price, imageUrl } = products;
 
   const {addItemCart} = useContext(CardContext); 
   const addProductToCard = () => addItemCart(products); 
