@@ -19,7 +19,7 @@ const ProductSingle = () => {
 
   if (!product) {
     return <div className="container">
-      <h6>Ürün bulunamadı</h6>
+      <h6>Məhsul tapılmadı</h6>
     </div>;
   }
 
