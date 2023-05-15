@@ -1,11 +1,14 @@
 import React, { useContext, useState } from "react";
 import { CategoriesContext } from "../../context/categories.context";
 import { Tab, Nav } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import ProductCard from "../../components/product-card/product-card.components";
 
 const Products = () => {
   const [activeTab, setActiveTab] = useState(0);
   const { categoriesMap } = useContext(CategoriesContext);
+  
+
   return (
     <section className="my-4 products">
       <div className="container">
@@ -25,7 +28,9 @@ const Products = () => {
                 <h3 className="heading fw-bold mt-4">{title}</h3>
                 <div className="row">
                   {categoriesMap[title].map((product) => (
-                    <ProductCard key={product.id} products={product} />
+                    <Link key={product.id} className="col-md-2 col-sm-6 col-xs-6 my-3" to={`/products/${product.id}`}>
+                      <ProductCard product={product} />
+                    </Link>
                   ))}
                 </div>
               </Tab.Pane>
