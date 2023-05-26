@@ -25,6 +25,17 @@ header .nav-items .nav-item {
   color: #000 !important;
   font-weight: 500;
 }
+header .sign-out {
+  background-color: #000;
+  border-radius: 2px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+}
 
 .categories .category h1 {
   color: #000;
@@ -268,14 +279,21 @@ header .nav-items .nav-item {
 .products .image-box img {
   height: 100%;
 }
+.products .content-box .product-name {
+  color: #000;
+  margin-top: 10px;
+}
+.products .content-box .product-price {
+  color: #000;
+}
 .products .product-button {
   background: black;
   color: #fff;
   border: none;
   padding: 5px 20px;
-  border-radius: 3px;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  -ms-border-radius: 3px;
-  -o-border-radius: 3px;
+  border-radius: 2px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
 }/*# sourceMappingURL=style.css.map */

@@ -37,7 +37,7 @@ const Header = () => {
                 </NavLink>
                 <CardIcon />
                 {isCardOpen && <CardDropdown />}
-                <Button buttonType="sign-out" onClick={signOutUser}>
+                <Button buttonType="signOut" onClick={signOutUser}>
                   Sign Out
                 </Button>
               </>
