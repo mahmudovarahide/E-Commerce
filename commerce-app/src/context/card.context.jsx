@@ -78,6 +78,7 @@ export const CardProvider = ({ children }) => {
     );
     setTotal(newTotal);
   }, [cardItems]);
+  
 
   const value = {
     isCardOpen,

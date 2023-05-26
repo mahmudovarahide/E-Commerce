@@ -1,10 +1,22 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { CardContext } from "../../context/card.context";
 
 const CheckoutItem = ({ item }) => {
-  const { addItemCart, removeItemCart,clearItemFromCard } = useContext(CardContext);
+  const { addItemCart, removeItemCart, clearItemFromCard } =
+    useContext(CardContext);
+
   const { imageUrl, name, quantity, price } = item;
-  const clearItemHandler=()=>clearItemFromCard(item)
+
+  const [totalItemCost, setTotalItemCost] = useState(price * quantity);
+
+  useEffect(() => {
+    setTotalItemCost(price * quantity);
+  }, [quantity]);
+
+
+  const clearItemHandler = () => clearItemFromCard(item);
+
+
   return (
     <>
       <div className="checkout-item-container">
@@ -26,7 +38,7 @@ const CheckoutItem = ({ item }) => {
           ></i>
         </div>
         <div className="col-md-2">
-          <h5>{price}</h5>
+          <h5>{totalItemCost}</h5>
         </div>
         <div className="col-md-1">
           <i className="fas fa-xmark" onClick={clearItemHandler}></i>

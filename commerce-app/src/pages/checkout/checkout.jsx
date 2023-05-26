@@ -1,10 +1,9 @@
 import React, { useContext } from "react";
 import { CardContext } from "../../context/card.context";
-import CardItem from "../../components/card-item/card-item.component";
 import CheckoutItem from "../../components/checkout-item/checkout-item.components";
 
 const Checkout = () => {
-  const { cardItems, addItemCart, removeItemCart ,total} = useContext(CardContext);
+  const { cardItems ,total} = useContext(CardContext);
   return (
     <div className="checkout-container">
               <h4 className="fw-bold">Checkout</h4>
