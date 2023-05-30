@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useReducer } from "react";
 
 const addCartItem = (cardItems, productTooAdd) => {
   const existing = cardItems.find(
@@ -14,6 +14,7 @@ const addCartItem = (cardItems, productTooAdd) => {
   }
   return [...cardItems, { ...productTooAdd, quantity: 1 }];
 };
+
 const removeCardItem = (cardItems, removeDecrementItem) => {
   const existingCardItem = cardItems.find(
     (cardItem) => cardItem.id === removeDecrementItem.id
@@ -29,68 +30,118 @@ const removeCardItem = (cardItems, removeDecrementItem) => {
       : cardItem
   );
 };
-export const CardContext = createContext({
+const clearItem = (cardItems, cardItemToClear) => {
+  return cardItems.filter((cardItem) => cardItem.id !== cardItemToClear.id);
+};
+
+const INITIAL_STATE = {
   isCardOpen: false,
-  setIsCardOpen: () => {},
   cardItems: [],
-  addItemCart: () => {},
-  removeCardItem: () => {},
-  clearItemFromCard:()=>{},
   cardCount: 0,
-});
-const clearItem =(cardItems,cardItemToClear)=>{
-  return cardItems.filter(
-    (cardItem) => cardItem.id !== cardItemToClear.id
-  );
-}
+  total: 0,
+  itemCount: 0,
+};
+export const CardContext = createContext(INITIAL_STATE);
+
+export const CARD_ACTION_TYPES = {
+  SET_CARD_ITEMS: "SET_CARD_ITEMS",
+};
+
+const cardReducer = (state, action) => {
+  const { type, payload } = action;
+  switch (type) {
+    case CARD_ACTION_TYPES.SET_CARD_ITEMS:
+      return {
+        ...state,
+        ...payload,
+      };
+    default:
+      throw new Error(`Unhandled type ${type} in card Reducer`);
+  }
+};
+
 export const CardProvider = ({ children }) => {
-  const [isCardOpen, setIsCardOpen] = useState(false);
-  const [total, setTotal] = useState(0);
-  const [itemCount, setItemCount] = useState(0);
-  const [cardItems, setCardItems] = useState([]);
-  const [cardCount, setCardCount] = useState(0);
+  const [state, dispatch] = useReducer(cardReducer, INITIAL_STATE);
 
-  useEffect(() => {
-    const newCardCount = cardItems.reduce((total, cartItem) => {
-      return total + cartItem.quantity;
-    }, 0);
+  const { isCardOpen, cardItems, cardCount, total, itemCount } = state;
 
-    setCardCount(newCardCount);
-  }, [cardItems]);
+  const setIsCardOpen = (isOpen) => {
+    dispatch({
+      type: CARD_ACTION_TYPES.SET_CARD_ITEMS,
+      payload: { isCardOpen: isOpen },
+    });
+  };
 
   const addItemCart = (productTooAdd) => {
-    setCardItems(addCartItem(cardItems, productTooAdd));
+    dispatch({
+      type: CARD_ACTION_TYPES.SET_CARD_ITEMS,
+      payload: { cardItems: addCartItem(cardItems, productTooAdd) },
+    });
   };
 
   const removeItemCart = (removeDecrementItem) => {
-    setCardItems(removeCardItem(cardItems, removeDecrementItem));
-  };
-  const clearItemFromCard = (cardItemToClear) => {
-    setCardItems(clearItem(cardItems, cardItemToClear));
+    dispatch({
+      type: CARD_ACTION_TYPES.SET_CARD_ITEMS,
+      payload: { cardItems: removeCardItem(cardItems, removeDecrementItem) },
+    });
   };
 
-  //quantity uygun total price artir
+  const clearItemFromCard = (cardItemToClear) => {
+    dispatch({
+      type: CARD_ACTION_TYPES.SET_CARD_ITEMS,
+      payload: { cardItems: clearItem(cardItems, cardItemToClear) },
+    });
+  };
+
   useEffect(() => {
     const newTotal = cardItems.reduce(
       (accumulator, cartItem) =>
         accumulator + cartItem.price * cartItem.quantity,
       0
     );
-    setTotal(newTotal);
+    dispatch({
+      type: CARD_ACTION_TYPES.SET_CARD_ITEMS,
+      payload: { total: newTotal },
+    });
   }, [cardItems]);
-  
 
-  const value = {
+  useEffect(() => {
+    const newCardCount = cardItems.reduce(
+      (total, cartItem) => total + cartItem.quantity,
+      0
+    );
+    dispatch({
+      type: CARD_ACTION_TYPES.SET_CARD_ITEMS,
+      payload: { cardCount: newCardCount },
+    });
+  }, [cardItems]);
+
+  useEffect(() => {
+    const newItemCount = cardItems.reduce(
+      (total, cartItem) => total + cartItem.quantity,
+      0
+    );
+    dispatch({
+      type: CARD_ACTION_TYPES.SET_CARD_ITEMS,
+      payload: { itemCount: newItemCount },
+    });
+  }, [cardItems]);
+
+
+  const cartContextValue = {
     isCardOpen,
     setIsCardOpen,
     cardItems,
     addItemCart,
-    cardCount,
     removeItemCart,
-    total,
     clearItemFromCard,
+    cardCount,
+    total,
     itemCount,
   };
-
-  return <CardContext.Provider value={value}>{children}</CardContext.Provider>;
+  return (
+    <CardContext.Provider value={cartContextValue}>
+      {children}
+    </CardContext.Provider>
+  );
 };
