@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import Logo from "./image/logo.svg";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { UserContext } from "../../context/user.context";
 import { CardContext } from "../../context/card.context";
 import Button from "../../components/button/button.componnet";
@@ -9,9 +9,14 @@ import CardIcon from "../../components/card-icon/card-icon.component";
 import CardDropdown from "../../components/card-dropdown/card-dropdown.component";
 
 const Header = () => {
+  const navigate = useNavigate();
   const { currentUser } = useContext(UserContext);
   const { isCardOpen, setIsCardOpen } = useContext(CardContext);
 
+  const setSignOut = () => {
+    signOutUser();
+    navigate("/")
+  };
 
   return (
     <header className="p-3">
@@ -37,7 +42,7 @@ const Header = () => {
                 </NavLink>
                 <CardIcon />
                 {isCardOpen && <CardDropdown />}
-                <Button buttonType="signOut" onClick={signOutUser}>
+                <Button buttonType="signOut" onClick={setSignOut}>
                   Sign Out
                 </Button>
               </>
