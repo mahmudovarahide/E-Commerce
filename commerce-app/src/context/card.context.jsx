@@ -1,4 +1,5 @@
 import { createContext, useEffect, useReducer } from "react";
+import { createAction } from "../utils/reducers/reducer.utils";
 
 const addCartItem = (cardItems, productTooAdd) => {
   const existing = cardItems.find(
@@ -66,31 +67,31 @@ export const CardProvider = ({ children }) => {
   const { isCardOpen, cardItems, cardCount, total, itemCount } = state;
 
   const setIsCardOpen = (isOpen) => {
-    dispatch({
-      type: CARD_ACTION_TYPES.SET_CARD_ITEMS,
-      payload: { isCardOpen: isOpen },
+    const action = createAction(CARD_ACTION_TYPES.SET_CARD_ITEMS, {
+      isCardOpen: isOpen,
     });
+    dispatch(action);
   };
 
-  const addItemCart = (productTooAdd) => {
-    dispatch({
-      type: CARD_ACTION_TYPES.SET_CARD_ITEMS,
-      payload: { cardItems: addCartItem(cardItems, productTooAdd) },
+  const addItemCart = (productToAdd) => {
+    const action = createAction(CARD_ACTION_TYPES.SET_CARD_ITEMS, {
+      cardItems: addCartItem(cardItems, productToAdd),
     });
+    dispatch(action);
   };
 
   const removeItemCart = (removeDecrementItem) => {
-    dispatch({
-      type: CARD_ACTION_TYPES.SET_CARD_ITEMS,
-      payload: { cardItems: removeCardItem(cardItems, removeDecrementItem) },
+    const action = createAction(CARD_ACTION_TYPES.SET_CARD_ITEMS, {
+      cardItems: removeCardItem(cardItems, removeDecrementItem),
     });
+    dispatch(action);
   };
 
   const clearItemFromCard = (cardItemToClear) => {
-    dispatch({
-      type: CARD_ACTION_TYPES.SET_CARD_ITEMS,
-      payload: { cardItems: clearItem(cardItems, cardItemToClear) },
+    const action = createAction(CARD_ACTION_TYPES.SET_CARD_ITEMS, {
+      cardItems: clearItem(cardItems, cardItemToClear),
     });
+    dispatch(action);
   };
 
   useEffect(() => {
@@ -99,10 +100,8 @@ export const CardProvider = ({ children }) => {
         accumulator + cartItem.price * cartItem.quantity,
       0
     );
-    dispatch({
-      type: CARD_ACTION_TYPES.SET_CARD_ITEMS,
-      payload: { total: newTotal },
-    });
+    const action = createAction(CARD_ACTION_TYPES.SET_CARD_ITEMS,  { total: newTotal });
+    dispatch(action);
   }, [cardItems]);
 
   useEffect(() => {
@@ -110,10 +109,8 @@ export const CardProvider = ({ children }) => {
       (total, cartItem) => total + cartItem.quantity,
       0
     );
-    dispatch({
-      type: CARD_ACTION_TYPES.SET_CARD_ITEMS,
-      payload: { cardCount: newCardCount },
-    });
+    const action = createAction(CARD_ACTION_TYPES.SET_CARD_ITEMS, { cardCount: newCardCount });
+    dispatch(action);
   }, [cardItems]);
 
   useEffect(() => {
@@ -121,12 +118,9 @@ export const CardProvider = ({ children }) => {
       (total, cartItem) => total + cartItem.quantity,
       0
     );
-    dispatch({
-      type: CARD_ACTION_TYPES.SET_CARD_ITEMS,
-      payload: { itemCount: newItemCount },
-    });
+    const action = createAction(CARD_ACTION_TYPES.SET_CARD_ITEMS, { itemCount: newItemCount });
+    dispatch(action);
   }, [cardItems]);
-
 
   const cartContextValue = {
     isCardOpen,
