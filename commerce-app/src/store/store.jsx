@@ -7,3 +7,4 @@ const middleware = [logger];
 const composeEnhanges = compose(applyMiddleware(...middleware));
 
 export const store = createStore(rootReducer, undefined, composeEnhanges);
+

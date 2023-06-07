@@ -1,11 +1,12 @@
-import React, { useContext, useState } from "react";
-import { CategoriesContext } from "../../context/categories.context";
+import React, { useState } from "react";
 import { Tab, Nav } from "react-bootstrap";
 import ProductCard from "../../components/product-card/product-card.components";
+import { useSelector } from "react-redux";
+import { selectorCurrentCategories } from "../../store/categories/categories.selector";
 
 const Products = () => {
   const [activeTab, setActiveTab] = useState(0);
-  const { categoriesMap } = useContext(CategoriesContext);
+  const  categoriesMap  = useSelector(selectorCurrentCategories);
 
   return (
     <section className="my-4 products">

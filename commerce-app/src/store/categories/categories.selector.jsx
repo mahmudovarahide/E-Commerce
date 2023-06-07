@@ -1,0 +1,1 @@
+export const selectorCurrentCategories = (state) => state.categories.categoriesMap;

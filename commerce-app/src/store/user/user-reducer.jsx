@@ -13,6 +13,6 @@ export const userReducer = (state = INITAL_STATE, action) => {
         currentUser: payload,
       };
     default:
-      return state
+      return state;
   }
 };

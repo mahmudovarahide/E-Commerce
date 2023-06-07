@@ -1,21 +1,22 @@
 import React, { useContext, useState } from "react";
 import Logo from "./image/logo.svg";
 import { NavLink, useNavigate } from "react-router-dom";
-import { UserContext } from "../../context/user.context";
+import { useSelector } from "react-redux";
 import { CardContext } from "../../context/card.context";
 import Button from "../../components/button/button.componnet";
 import { signOutUser } from "../../utils/firebase/firebase.utils";
 import CardIcon from "../../components/card-icon/card-icon.component";
 import CardDropdown from "../../components/card-dropdown/card-dropdown.component";
+import { selectorCurrentUser } from "../../store/user/user.selector";
 
 const Header = () => {
   const navigate = useNavigate();
-  const { currentUser } = useContext(UserContext);
+  const currentUser = useSelector(selectorCurrentUser);
   const { isCardOpen, setIsCardOpen } = useContext(CardContext);
 
   const setSignOut = () => {
     signOutUser();
-    navigate("/")
+    navigate("/");
   };
 
   return (
