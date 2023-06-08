@@ -1,10 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Tab, Nav } from "react-bootstrap";
 import ProductCard from "../../components/product-card/product-card.components";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectorCurrentCategories } from "../../store/categories/categories.selector";
+import { getCategoriesAndDocuments } from "../../utils/firebase/firebase.utils";
+import { setCategoriesMap } from "../../store/categories/categories.action";
 
 const Products = () => {
+  
+  const dispatch = useDispatch();
+  useEffect(() => {
+    const getCategoriesMap = async () => {
+      const categoryMap = await getCategoriesAndDocuments();
+     dispatch( setCategoriesMap(categoryMap))
+    };
+    getCategoriesMap();
+  }, []);
+
   const [activeTab, setActiveTab] = useState(0);
   const  categoriesMap  = useSelector(selectorCurrentCategories);
 

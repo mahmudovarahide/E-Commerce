@@ -1,10 +1,11 @@
 import React, { useContext } from "react";
 import { useParams } from "react-router-dom";
-import { CategoriesContext } from "../../../context/categories.context";
+import { useSelector } from "react-redux";
+import { selectorCurrentCategories } from "../../../store/categories/categories.selector";
 
 const ProductSingle = () => {
   const { id } = useParams();
-  const { categoriesMap } = useContext(CategoriesContext);
+  const  categoriesMap  = useSelector(selectorCurrentCategories);
 
   let product = null;
   Object.keys(categoriesMap).forEach((categoryKey) => {
